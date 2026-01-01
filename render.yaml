@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: go-real-time-poll
+    env: go
+    plan: free
+    buildCommand: |
+      if [ ! -f go.mod ]; then
+        go mod init app
+      fi
+      go mod tidy
+      go build -o app .
+    startCommand: ./app
